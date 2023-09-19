@@ -32,35 +32,35 @@ export type Scalars = {
 };
 
 export type Account = {
-  id: Scalars["ID"]["output"];
-  name: Scalars["String"]["output"];
+  readonly id: Scalars["ID"]["output"];
+  readonly name: Scalars["String"]["output"];
 };
 
 export type AdminAccount = Account & {
-  __typename?: "AdminAccount";
-  email: Scalars["String"]["output"];
-  id: Scalars["ID"]["output"];
-  name: Scalars["String"]["output"];
+  readonly __typename?: "AdminAccount";
+  readonly email: Scalars["String"]["output"];
+  readonly id: Scalars["ID"]["output"];
+  readonly name: Scalars["String"]["output"];
 };
 
 export type Book = {
-  __typename?: "Book";
-  author: Scalars["String"]["output"];
-  id: Scalars["ID"]["output"];
-  title: Scalars["String"]["output"];
+  readonly __typename?: "Book";
+  readonly author: Scalars["String"]["output"];
+  readonly id: Scalars["ID"]["output"];
+  readonly title: Scalars["String"]["output"];
 };
 
 export type GuestAccount = Account & {
-  __typename?: "GuestAccount";
-  expiresAt: Scalars["String"]["output"];
-  id: Scalars["ID"]["output"];
-  name: Scalars["String"]["output"];
+  readonly __typename?: "GuestAccount";
+  readonly expiresAt: Scalars["String"]["output"];
+  readonly id: Scalars["ID"]["output"];
+  readonly name: Scalars["String"]["output"];
 };
 
 export type Query = {
-  __typename?: "Query";
-  getUsers: Array<User>;
-  search: Array<SearchResult>;
+  readonly __typename?: "Query";
+  readonly getUsers: ReadonlyArray<User>;
+  readonly search: ReadonlyArray<SearchResult>;
 };
 
 export type QueryGetUsersArgs = {
@@ -74,10 +74,10 @@ export type QuerySearchArgs = {
 export type SearchResult = Book | User;
 
 export type User = {
-  __typename?: "User";
-  email: Scalars["String"]["output"];
-  id: Scalars["ID"]["output"];
-  name: Scalars["String"]["output"];
+  readonly __typename?: "User";
+  readonly email: Scalars["String"]["output"];
+  readonly id: Scalars["ID"]["output"];
+  readonly name: Scalars["String"]["output"];
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -280,13 +280,13 @@ export type QueryResolvers<
     ResolversParentTypes["Query"] = ResolversParentTypes["Query"],
 > = {
   getUsers?: Resolver<
-    Array<ResolversTypes["User"]>,
+    ReadonlyArray<ResolversTypes["User"]>,
     ParentType,
     ContextType,
     Partial<QueryGetUsersArgs>
   >;
   search?: Resolver<
-    Array<ResolversTypes["SearchResult"]>,
+    ReadonlyArray<ResolversTypes["SearchResult"]>,
     ParentType,
     ContextType,
     RequireFields<QuerySearchArgs, "text">

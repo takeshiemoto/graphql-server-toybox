@@ -6,6 +6,9 @@ const config: CodegenConfig = {
   generates: {
     "src/graphql/generated.ts": {
       plugins: ["typescript", "typescript-resolvers"],
+      config: {
+        immutableTypes: true,
+      },
     },
   },
   hooks: { afterAllFileWrite: ["prettier --write"] },
