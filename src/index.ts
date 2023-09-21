@@ -1,38 +1,7 @@
 import { ApolloServer, gql } from "apollo-server-express";
 import express from "express";
-import { Resolvers, User, Book } from "./graphql/generated";
-
-const users: User[] = [
-  { id: "ID1", name: "John", email: "john@gmail.com" },
-  { id: "ID2", name: "Paul", email: "paul@gmail.com" },
-  { id: "ID3", name: "George", email: "george@gmail.com" },
-  { id: "ID4", name: "Ringo", email: "ringo@gmail.com" },
-];
-
-const books: Book[] = [
-  { id: "ID1", title: "Harry Potter", author: "J.K. Rowling" },
-  { id: "ID2", title: "Jurassic Park John", author: "Michael Crichton" },
-  { id: "ID3", title: "The Hobbit", author: "J.R.R. Tolkien" },
-  { id: "ID4", title: "A Song of Ice and Fire", author: "George R.R. Martin" },
-];
-
-const UserRepository = {
-  getAll() {
-    return users;
-  },
-  getById(id: string) {
-    return users.find((user) => user.id === id);
-  },
-};
-
-const BookRepository = {
-  getAll() {
-    return books;
-  },
-  getById(id: string) {
-    return books.find((book) => book.id === id);
-  },
-};
+import { Resolvers } from "./graphql/generated";
+import { BookRepository, UserRepository } from "./repositories";
 
 const typeDefs = gql`
   interface Account {
